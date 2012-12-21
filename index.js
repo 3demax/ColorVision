@@ -112,7 +112,7 @@ $(document).ready(function () {
 			console.log("test", user_input(), correct_answer, ans)
 			return {
 				'id': id,
-				'image': "./img/rabkin/" + id + ".png",
+				'image': "./img/demo.png",
 				'type': type,
 				'user_input': user_input,
 				'answer': ans,
