@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Проверка цветового зрения</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 20px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="./ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Дослідження кольорового зору</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              
+			</ul>
+			<ul class="nav pull-right">
+              <!-- <li><a class="nav-text access-patient">Иван Иванович</a></li> -->
+			  <li class="dropdown pull-right">
+				<a class="dropdown-toggle btn-danger admin" data-toggle="dropdown" href="#" style="color:white;" data-bind="visible: app.adminMode()" style="display:none;">
+				  Режим лікаря
+				  <b class="caret"></b>
+				</a>
+				<a class="dropdown-toggle btn-primary admin" data-toggle="dropdown" href="#" style="color:white;" data-bind="visible: !app.adminMode()">
+				  Режим пацієнта
+				  <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a href="#" data-bind="visible: app.adminMode, click: app.goPatientMode">Перейти до режиму пацієнта</a></li>
+				  <li><a href="#" data-bind="visible: !app.adminMode(), click: app.goAdminMode">Перейти до режиму лікаря</a></li>
+				  <!-- <li class="divider"></li> -->
+				</ul>
+			  </li>
+			</ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+   
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+		<!-- <div class="span2">&nbsp;</div> -->
+        <div class="span12">
+  
+
+      <div class="row-fluid test rabkin">
+        <div class="well">
+		  <h2>Тест Рабкіна</h2>
+		  <ul class="pager">
+			<li class="previous">
+			  <a href="#" data-bind="click: $root.prev, css: {'hidden': !app.adminMode()}">&larr; Назад</a>
+			</li>
+            <li><a href="#" data-bind="text: $root.test().id +'/' + $root.questions().length"></a></li>
+			<li class="next">
+			  <a href="#" data-bind="click: $root.next">Далі &rarr;</a>
+			</li>
+		  </ul>
+		  <br />
+          <div class="row-fluid question">
+            <div class="image span6">
+			  <ul class="thumbnails">
+				<li class="span4 offset1">
+				  <a href="#" class="thumbnail">
+					<img src="http://placehold.it/200x200" data-bind="attr: {src: $root.test().image}">
+				  </a>
+				</li>
+			  </ul>
+            </div>
+            <div class="response span6">
+			  <div class="alert alert-info">
+				Введить число, яке бачите на зображенні зліва
+			  </div>
+			  <div class="alert alert-info">
+				Якщо на зображенні немає фігур та/або чисел, ставте знак тире
+			  </div>
+              <input type="text" class="" placeholder="число" data-bind="value: test().user_input"/>
+			  
+
+            </div>
+          </div>
+
+		  <ul class="pager">
+			<li class="previous">
+			  <a href="#" data-bind="click: $root.prev, css: {'hidden': !app.adminMode()}">&larr; Назад</a>
+			</li>
+            <li><a href="#" data-bind="text: $root.test().id +'/' + $root.questions().length"></a></li>
+			<li class="next">
+			  <a href="#" data-bind="click: $root.next">Далі &rarr;</a>
+			</li>
+		  </ul>
+
+        </div> <!-- well -->
+      </div> <!-- test-rabkin -->
+
+      <!-- <hr> -->
+
+      <div class="row-fluid answers rabkin" id="result-rabkin">
+		<!-- <div class=""> -->
+
+		<div class="well" data-bind="css: {'hidden': !app.adminMode()}">
+		  <h1>Аналіз відповідей </h1>
+
+
+				<div class="diagnosis">
+                  <h2>Форма</h2>
+                  <h3>Попередній діагноз</h3>
+                  <table>
+                      <thead>
+                        <th>Нормальна<br />трихромазія</th>
+                        <th>Аномальна<br />трихромазія</th>
+                        <!-- <th>Протаномалія</th> -->
+                        <!-- <th>Дейтераномалія</th> -->
+                        <th>Протанопія</th>
+                        <th>Дейтеранопія</th>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td data-bind="text: diagnosis().trichromacy+'%'"></td>
+                              <td data-bind="text: diagnosis().a_trichromacy+'%'"></td>
+                              <td data-bind="text: diagnosis().protanopia+'%'"></td>
+                              <td data-bind="text: diagnosis().deuteranopia+'%'"></td>
+                          </tr>
+                      </tbody>
+                  </table>
+				  
+				</div>
+				<br />
+                <h3>Діагностична таблиця</h3>
+				  <table data-bind="visible: $root.answers().length > 0" class="">
+					<thead>
+					  <tr>
+						<th rowspan="2">№</th>
+						<th rowspan="2">Нормальна <br /> трихромазія</th>
+						<th colspan="2">Аномалії зору</th>
+						<th rowspan="2">Введено<br /></th>
+						<th rowspan="2">Відповідь<br /></th>
+						<!-- <th /> -->
+					  </tr>
+					  <tr>
+						<th>Протанопія</th>
+						<th>Дейтеранопія</th>
+						<!-- <th /> -->
+					  </tr>
+					</thead>
+					<tbody data-bind="foreach: answers">
+					  <tr>
+						<td><span data-bind='text: id, uniqueName: true' /></td>
+
+						<!-- Normal trichromasia -->
+						<td data-bind="text: name, attr: {'data-content': '<img src=./img/rabkin/' + id + '.png class=&quot;question-preview&quot; />' }" class="text-popover">
+						  <span />
+						</td>
+
+						<!-- Protanopia -->
+						<td data-bind="text: (protanopia != '') ? protanopia : name">
+						</td>
+						
+						<!-- Dichromasia -->
+						<td data-bind="text: (deuteranopia != '') ? deuteranopia : name">
+						</td>
+						
+						
+						<!-- User input -->
+						<td data-bind="text: user_input">
+						</td>
+
+						<!-- Answer -->
+						<td class="plusminus">
+						  <input class="hidden" type="checkbox" data-bind="checked: answer" />
+						  <div class="btn-group plusminus" data-toggle="buttons-radio">
+							<button class="btn minus" data-bind="css: {'active': !answer(), 'btn-danger': !answer()}, click: $root.toggle">-</button>
+							<button class="btn plus"  data-bind="css: {'active': answer, 'btn-success': answer}, click: $root.toggle">+</button>
+						  </div>
+						</td>
+					  </tr>
+					</tbody>
+				  </table>
+				<!-- </div> <\!--div table-\-> -->
+
+		</div> <!--well-->
+		
+
+
+      </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+	
+	<script src="./knockout/knockout-2.0.0.js"></script>
+	<script src="index.js"></script>
+  </body>
+</html>
